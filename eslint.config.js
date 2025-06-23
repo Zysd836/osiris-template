@@ -31,7 +31,7 @@ export default tseslint.config(
           tabWidth: 2,
           semi: false,
           singleQuote: true,
-          trailingComma: 'all',
+          trailingComma: 'none',
           printWidth: 120,
           useTabs: false,
           endOfLine: 'auto',
