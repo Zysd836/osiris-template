@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
 body {
   font-family: "Roboto", sans-serif;
   font-size: 16px;

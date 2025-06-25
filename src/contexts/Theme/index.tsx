@@ -1,0 +1,48 @@
+import React from 'react'
+import { IThemeContext } from './type'
+import { initThemeContext } from './initContext'
+import { ConfigProvider, theme } from 'antd'
+
+const ThemeContext = React.createContext<IThemeContext>(initThemeContext)
+
+const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const [themeMode, setThemeMode] = React.useState(initThemeContext.themeMode)
+  const [layout, setLayout] = React.useState(initThemeContext.layout)
+  const [sideMenuType, setSideMenuType] = React.useState(initThemeContext.sideMenuType)
+  const [darkMode, setDarkMode] = React.useState(false)
+
+  const changeDarkMode = () => {
+    setDarkMode((prev) => {
+      const newDarkMode = !prev
+      document.documentElement.setAttribute('data-theme', newDarkMode ? 'dark' : 'light')
+      return newDarkMode
+    })
+  }
+
+  return (
+    <ThemeContext.Provider
+      value={{
+        themeMode,
+        layout,
+        sideMenuType,
+        darkMode,
+        setThemeMode,
+        setLayout,
+        setSideMenuType,
+        changeDarkMode,
+      }}
+    >
+      <ConfigProvider
+        theme={{
+          token: {
+            colorPrimary: themeMode,
+          },
+          algorithm: darkMode ? theme.darkAlgorithm : theme.defaultAlgorithm,
+        }}
+      >
+        {children}
+      </ConfigProvider>
+    </ThemeContext.Provider>
+  )
+}
+export { ThemeContext, ThemeProvider }
