@@ -4,7 +4,7 @@ import useAuth from './contexts/Auth/useAuth'
 import { initialAuthContext } from './contexts/Auth/initContext'
 
 // Create a new router instance
-const router = createRouter({ routeTree, context: initialAuthContext })
+const router = createRouter({ routeTree, context: { auth: initialAuthContext } })
 
 // Register the router instance for type safety
 declare module '@tanstack/react-router' {
@@ -17,7 +17,7 @@ const App = () => {
   return (
     <RouterProvider
       router={router}
-      context={auth}
+      context={{ auth }}
     />
   )
 }
