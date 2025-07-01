@@ -1,9 +1,12 @@
+import { fetchMe } from '@/utils/auth.mock'
 import { createFileRoute, Outlet, redirect } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/(main)')({
   component: RouteComponent,
+  pendingComponent: () => <div>Loading...</div>,
   beforeLoad: async ({ context, location }) => {
-    if (!context.auth.isAuthenticated) {
+    const data = await fetchMe()
+    if (!context.auth.isAuthenticated && data) {
       throw redirect({
         to: '/login',
         search: {

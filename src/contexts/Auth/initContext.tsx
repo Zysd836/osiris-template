@@ -1,10 +1,9 @@
+import { CookieKey } from '@/utils/cookie'
 import { IAuthContext } from './type'
-
+import Cookie from 'js-cookie'
 export const initialAuthContext: IAuthContext = {
-  isAuthenticated: false,
-  login: (username: string, password: string) => {
-    console.log(`Logging in with ${username} and ${password}`)
-  },
+  isAuthenticated: Cookie.get(CookieKey.AUTH_TOKEN) ? true : false,
+  login: () => {},
   logout: () => {
     console.log('Logging out')
   },

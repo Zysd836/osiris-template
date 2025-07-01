@@ -1,17 +1,23 @@
 import React, { useState } from 'react'
 import { initialAuthContext } from './initContext'
 import { IAuthContext } from './type'
-import { redirect } from '@tanstack/react-router'
+import { UseNavigateResult } from '@tanstack/react-router'
+import { initialAuthValues } from '@/utils/auth.mock'
+import Cookie from 'js-cookie'
+import { CookieKey, Default_Expiration_Days } from '@/utils/cookie'
 const AuthContext = React.createContext<IAuthContext>(initialAuthContext)
 
 const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isAuthenticated, setAuthenticated] = useState(initialAuthContext.isAuthenticated)
 
-  const login = (values: Schema.LoginRequest) => {
-    console.log(`Logging in with ${values.username} and ${values.password}`)
-    if (values.username === 'admin' && values.password === 'password') {
+  const login = (values: Schema.LoginRequest, navigate: UseNavigateResult<string>) => {
+    if (values.username === initialAuthValues.username && values.password === initialAuthValues.password) {
+      Cookie.set(CookieKey.AUTH_TOKEN, 'valid_token', {
+        expires: Default_Expiration_Days,
+      })
+
       setAuthenticated(true)
-      redirect({ to: '/dashboard' })
+      navigate({ to: '/dashboard' })
     }
   }
   const logout = () => {
