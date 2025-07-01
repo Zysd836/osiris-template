@@ -1,5 +1,5 @@
 export interface IAuthContext {
   isAuthenticated: boolean
-  login: (username: string, password: string) => void
+  login: (values: Schema.LoginRequest) => void
   logout: () => void
 }

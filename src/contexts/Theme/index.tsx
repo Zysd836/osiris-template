@@ -2,6 +2,7 @@ import React from 'react'
 import { IThemeContext } from './type'
 import { initThemeContext } from './initContext'
 import { ConfigProvider, theme } from 'antd'
+import { StyleProvider } from '@ant-design/cssinjs'
 
 const ThemeContext = React.createContext<IThemeContext>(initThemeContext)
 
@@ -32,16 +33,18 @@ const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) =>
         changeDarkMode,
       }}
     >
-      <ConfigProvider
-        theme={{
-          token: {
-            colorPrimary: themeMode,
-          },
-          algorithm: darkMode ? theme.darkAlgorithm : theme.defaultAlgorithm,
-        }}
-      >
-        {children}
-      </ConfigProvider>
+      <StyleProvider layer>
+        <ConfigProvider
+          theme={{
+            token: {
+              colorPrimary: themeMode,
+            },
+            algorithm: darkMode ? theme.darkAlgorithm : theme.defaultAlgorithm,
+          }}
+        >
+          {children}
+        </ConfigProvider>
+      </StyleProvider>
     </ThemeContext.Provider>
   )
 }

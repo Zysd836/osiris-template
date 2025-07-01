@@ -3,13 +3,13 @@ import { useTheme } from '@/contexts/Theme/useTheme'
 import { createFileRoute } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/(auth)/login/')({
-  component: RouteComponent,
+  component: LoginComponent,
   beforeLoad: async ({ context }) => {
     console.log('Before loading /login/', context)
   },
 })
 
-function RouteComponent() {
+export function LoginComponent() {
   const theme = useTheme()
   return (
     <Login.Container>
