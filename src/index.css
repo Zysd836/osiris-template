@@ -7,5 +7,5 @@ body {
   font-size: 16px;
   margin: 0;
   padding: 0;
-  background-color: #f0f0f0;
+  @apply bg-gray-200;
 }

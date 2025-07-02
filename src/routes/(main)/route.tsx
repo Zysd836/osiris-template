@@ -1,6 +1,7 @@
 import { fetchMe } from '@/utils/auth.mock'
 import { createFileRoute, Outlet, redirect } from '@tanstack/react-router'
 import Loading from '@/components/common/loading'
+import ProLayout from '@/layout/ProLayout'
 export const Route = createFileRoute('/(main)')({
   component: RouteComponent,
   pendingComponent: () => (
@@ -23,8 +24,8 @@ export const Route = createFileRoute('/(main)')({
 
 function RouteComponent() {
   return (
-    <main>
+    <ProLayout>
       <Outlet />
-    </main>
+    </ProLayout>
   )
 }
