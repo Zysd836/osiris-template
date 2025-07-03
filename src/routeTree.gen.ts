@@ -11,8 +11,11 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as mainRouteRouteImport } from './routes/(main)/route'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as mainDemoRouteRouteImport } from './routes/(main)/demo/route'
+import { Route as mainPermissionIndexRouteImport } from './routes/(main)/permission/index'
 import { Route as mainDashboardIndexRouteImport } from './routes/(main)/dashboard/index'
 import { Route as authLoginIndexRouteImport } from './routes/(auth)/login/index'
+import { Route as mainDemoAbcIndexRouteImport } from './routes/(main)/demo/abc/index'
 
 const mainRouteRoute = mainRouteRouteImport.update({
   id: '/(main)',
@@ -22,6 +25,16 @@ const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
+} as any)
+const mainDemoRouteRoute = mainDemoRouteRouteImport.update({
+  id: '/demo',
+  path: '/demo',
+  getParentRoute: () => mainRouteRoute,
+} as any)
+const mainPermissionIndexRoute = mainPermissionIndexRouteImport.update({
+  id: '/permission/',
+  path: '/permission/',
+  getParentRoute: () => mainRouteRoute,
 } as any)
 const mainDashboardIndexRoute = mainDashboardIndexRouteImport.update({
   id: '/dashboard/',
@@ -33,30 +46,58 @@ const authLoginIndexRoute = authLoginIndexRouteImport.update({
   path: '/login/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const mainDemoAbcIndexRoute = mainDemoAbcIndexRouteImport.update({
+  id: '/abc/',
+  path: '/abc/',
+  getParentRoute: () => mainDemoRouteRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof mainRouteRouteWithChildren
+  '/demo': typeof mainDemoRouteRouteWithChildren
   '/login': typeof authLoginIndexRoute
   '/dashboard': typeof mainDashboardIndexRoute
+  '/permission': typeof mainPermissionIndexRoute
+  '/demo/abc': typeof mainDemoAbcIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof mainRouteRouteWithChildren
+  '/demo': typeof mainDemoRouteRouteWithChildren
   '/login': typeof authLoginIndexRoute
   '/dashboard': typeof mainDashboardIndexRoute
+  '/permission': typeof mainPermissionIndexRoute
+  '/demo/abc': typeof mainDemoAbcIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/(main)': typeof mainRouteRouteWithChildren
+  '/(main)/demo': typeof mainDemoRouteRouteWithChildren
   '/(auth)/login/': typeof authLoginIndexRoute
   '/(main)/dashboard/': typeof mainDashboardIndexRoute
+  '/(main)/permission/': typeof mainPermissionIndexRoute
+  '/(main)/demo/abc/': typeof mainDemoAbcIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/login' | '/dashboard'
+  fullPaths:
+    | '/'
+    | '/demo'
+    | '/login'
+    | '/dashboard'
+    | '/permission'
+    | '/demo/abc'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/login' | '/dashboard'
-  id: '__root__' | '/' | '/(main)' | '/(auth)/login/' | '/(main)/dashboard/'
+  to: '/' | '/demo' | '/login' | '/dashboard' | '/permission' | '/demo/abc'
+  id:
+    | '__root__'
+    | '/'
+    | '/(main)'
+    | '/(main)/demo'
+    | '/(auth)/login/'
+    | '/(main)/dashboard/'
+    | '/(main)/permission/'
+    | '/(main)/demo/abc/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -81,6 +122,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/(main)/demo': {
+      id: '/(main)/demo'
+      path: '/demo'
+      fullPath: '/demo'
+      preLoaderRoute: typeof mainDemoRouteRouteImport
+      parentRoute: typeof mainRouteRoute
+    }
+    '/(main)/permission/': {
+      id: '/(main)/permission/'
+      path: '/permission'
+      fullPath: '/permission'
+      preLoaderRoute: typeof mainPermissionIndexRouteImport
+      parentRoute: typeof mainRouteRoute
+    }
     '/(main)/dashboard/': {
       id: '/(main)/dashboard/'
       path: '/dashboard'
@@ -95,15 +150,38 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof authLoginIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/(main)/demo/abc/': {
+      id: '/(main)/demo/abc/'
+      path: '/abc'
+      fullPath: '/demo/abc'
+      preLoaderRoute: typeof mainDemoAbcIndexRouteImport
+      parentRoute: typeof mainDemoRouteRoute
+    }
   }
 }
 
+interface mainDemoRouteRouteChildren {
+  mainDemoAbcIndexRoute: typeof mainDemoAbcIndexRoute
+}
+
+const mainDemoRouteRouteChildren: mainDemoRouteRouteChildren = {
+  mainDemoAbcIndexRoute: mainDemoAbcIndexRoute,
+}
+
+const mainDemoRouteRouteWithChildren = mainDemoRouteRoute._addFileChildren(
+  mainDemoRouteRouteChildren,
+)
+
 interface mainRouteRouteChildren {
+  mainDemoRouteRoute: typeof mainDemoRouteRouteWithChildren
   mainDashboardIndexRoute: typeof mainDashboardIndexRoute
+  mainPermissionIndexRoute: typeof mainPermissionIndexRoute
 }
 
 const mainRouteRouteChildren: mainRouteRouteChildren = {
+  mainDemoRouteRoute: mainDemoRouteRouteWithChildren,
   mainDashboardIndexRoute: mainDashboardIndexRoute,
+  mainPermissionIndexRoute: mainPermissionIndexRoute,
 }
 
 const mainRouteRouteWithChildren = mainRouteRoute._addFileChildren(

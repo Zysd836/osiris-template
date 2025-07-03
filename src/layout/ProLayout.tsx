@@ -1,41 +1,37 @@
-import Logo from '@/components/common/logo'
-import { Layout, Menu } from 'antd'
-import { Content, Footer, Header } from 'antd/es/layout/layout'
-import Sider from 'antd/es/layout/Sider'
-import React from 'react'
+import { useTheme } from '@/contexts/Theme/useTheme'
+import React, { useMemo } from 'react'
+import TopMenuLayout from './TopMenuLayout'
+import { MenuProps } from 'antd'
+import { useRouter } from '@tanstack/react-router'
 
 interface ProLayoutProps {
   children?: React.ReactNode
 }
-const mockMenuItems = [
+const mockMenuItems: MenuProps['items'] = [
   { key: '1', label: 'Home' },
-  { key: '2', label: 'About' },
-  { key: '3', label: 'Contact' },
+  {
+    key: '2',
+    label: 'Permission',
+  },
+  { key: '3', label: 'Demo', children: [{ key: '3-1', label: 'abc' }] },
 ]
 const ProLayout: React.FC<ProLayoutProps> = ({ children }) => {
-  return (
-    <Layout className="bg-gray-200">
-      <Header className="bg-white dark:bg-black flex items-center p-4">
-        <Logo.Header />
-        <div className="flex-1">
-          <Menu
-            mode="horizontal"
-            items={mockMenuItems}
-          />
-        </div>
-      </Header>
-      <Layout className="">
-        <Sider className="fixed w-[200px] h-[calc(100dvh-64px)]">
-          <Menu
-            className="h-full"
-            items={mockMenuItems}
-          />
-        </Sider>
-        <Content>{children}</Content>
-      </Layout>
-      <Footer className="p-4 bg-gray-200">Footer</Footer>
-    </Layout>
-  )
+  const { layout, darkMode } = useTheme()
+  const router = useRouter()
+  console.log('🚀 -------------------🚀')
+  console.log('🚀 ~ router:', router)
+  console.log('🚀 -------------------🚀')
+
+  const renderLayout = useMemo(() => {
+    switch (layout) {
+      case 'top':
+        return <TopMenuLayout items={mockMenuItems}>{children}</TopMenuLayout>
+      default:
+        return null
+    }
+  }, [layout, children])
+
+  return <>{renderLayout}</>
 }
 
 export default ProLayout
