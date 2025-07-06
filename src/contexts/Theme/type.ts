@@ -5,5 +5,5 @@ export interface IThemeContext extends ITheme {
   setThemeMode: (mode: ThemeMode) => void
   setLayout: (layout: ITheme['layout']) => void
   setSideMenuType: (type: ITheme['sideMenuType']) => void
-  changeDarkMode: () => void // Use Dispatch type for setState functions
+  changeDarkMode: (value: string) => void // Use Dispatch type for setState functions
 }

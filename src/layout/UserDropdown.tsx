@@ -1,5 +1,4 @@
 import { Avatar, Dropdown, MenuProps } from 'antd'
-import React from 'react'
 
 const items: MenuProps['items'] = [
   {

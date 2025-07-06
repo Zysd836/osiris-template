@@ -12,7 +12,13 @@ const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) =>
   const [sideMenuType, setSideMenuType] = React.useState(initThemeContext.sideMenuType)
   const [darkMode, setDarkMode] = React.useState(false)
 
-  const changeDarkMode = () => {
+  const changeDarkMode = (value: string) => {
+    if (value) {
+      const isDark = value === 'dark'
+      document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light')
+      setDarkMode(isDark)
+      return
+    }
     setDarkMode((prev) => {
       const newDarkMode = !prev
       document.documentElement.setAttribute('data-theme', newDarkMode ? 'dark' : 'light')

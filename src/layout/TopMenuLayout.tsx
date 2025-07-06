@@ -4,12 +4,14 @@ import { Breadcrumb, Layout, Menu, MenuProps } from 'antd'
 import { Content, Footer, Header } from 'antd/es/layout/layout'
 import React from 'react'
 import UserDropdown from './UserDropdown'
+import { useNavigate } from '@tanstack/react-router'
 
 type TopMenuLayoutProps = {
   items: MenuProps['items']
   children?: React.ReactNode
 }
 const TopMenuLayout: React.FC<TopMenuLayoutProps> = ({ items, children }) => {
+  const navigate = useNavigate()
   return (
     <>
       <Layout className="bg-transparent">
@@ -19,6 +21,9 @@ const TopMenuLayout: React.FC<TopMenuLayoutProps> = ({ items, children }) => {
             <div className="flex-1">
               <Menu
                 mode="horizontal"
+                onClick={(e) => {
+                  navigate({ to: e.key })
+                }}
                 className="border-0 h-14"
                 items={items}
               />

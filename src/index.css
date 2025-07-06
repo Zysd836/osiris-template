@@ -9,5 +9,5 @@ body {
   overflow: hidden;
   margin: 0;
   padding: 0;
-  @apply bg-gray-200;
+  @apply bg-gray-200 dark:bg-gray-900 text-gray-800 dark:text-gray-200;
 }
