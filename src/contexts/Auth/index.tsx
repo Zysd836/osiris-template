@@ -9,6 +9,7 @@ const AuthContext = React.createContext<IAuthContext>(initialAuthContext)
 
 const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isAuthenticated, setAuthenticated] = useState(initialAuthContext.isAuthenticated)
+  const [me, setMe] = useState<Schema.Me | undefined>(initialAuthContext?.me)
 
   const login = (values: Schema.LoginRequest, navigate: UseNavigateResult<string>) => {
     if (values.username === initialAuthValues.username && values.password === initialAuthValues.password) {
@@ -30,6 +31,8 @@ const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => 
         isAuthenticated,
         login,
         logout,
+        me,
+        setMe,
       }}
     >
       {children}

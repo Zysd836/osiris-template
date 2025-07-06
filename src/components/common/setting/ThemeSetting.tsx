@@ -16,7 +16,7 @@ const ThemeSetting = () => {
         checkedValue={themeMode}
         items={themeModesMap}
         renderItem={(item) => (
-          <Tooltip title={item.key}>
+          <Tooltip title={item.name}>
             <div
               className={cn('w-6 h-6 rounded-sm', 'mb-1')}
               style={{

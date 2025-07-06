@@ -39,7 +39,10 @@ const LayoutSetting = () => {
         items={options}
         renderItem={(item) => (
           <Tooltip title={item.name}>
-            <img src={item.icon} />
+            <img
+              className="h-10"
+              src={item.icon}
+            />
           </Tooltip>
         )}
       />
