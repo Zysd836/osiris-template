@@ -1,8 +1,5 @@
-import { useTheme } from '@/contexts/Theme/useTheme'
-import { Button, Dropdown, Tooltip } from 'antd'
+import { Button, Dropdown } from 'antd'
 import { Languages } from 'lucide-react'
-import React from 'react'
-
 const items = [
   {
     key: 'en',
@@ -21,12 +18,11 @@ const items = [
   },
 ]
 const SwitchLanguage = () => {
-  const { layout } = useTheme()
   return (
     <Dropdown menu={{ items }}>
       <Button
         type="text"
-        size={layout === 'top' ? 'small' : 'large'}
+        size={'large'}
         icon={<Languages size={16} />}
       />
     </Dropdown>

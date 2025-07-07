@@ -8,16 +8,19 @@ import { useNavigate } from '@tanstack/react-router'
 import Sider from 'antd/es/layout/Sider'
 import SwitchLanguage from './SwitchLanguage'
 
-type TopMenuLayoutProps = {
+type MixMenuLayout = {
   items: MenuProps['items']
   children?: React.ReactNode
 }
-const SideMenuLayout: React.FC<TopMenuLayoutProps> = ({ items, children }) => {
+const SideMenuLayout: React.FC<MixMenuLayout> = ({ items, children }) => {
   const navigate = useNavigate()
   return (
     <>
       <Layout className="bg-transparent">
-        <Sider className={cn('w-[200px] h-dvh', 'bg-white dark:bg-black')}>
+        <Sider
+          collapsedWidth={720}
+          className={cn('w-[200px] h-dvh', 'bg-white dark:bg-black')}
+        >
           <Logo.Header className={cn('flex items-center justify-center h-14')} />
           <div className="overflow-y-auto max-h-[calc(100dvh-var(--spacing)*25)]">
             <Menu
@@ -33,7 +36,7 @@ const SideMenuLayout: React.FC<TopMenuLayoutProps> = ({ items, children }) => {
             className={cn(
               'absolute bottom-0',
               'bg-white dark:bg-black',
-              'flex gap-auto justify-between px-1 border-t border-gray-200',
+              'flex gap-auto justify-between px-1 border-t border-gray-100',
               'w-full h-11',
             )}
           >
