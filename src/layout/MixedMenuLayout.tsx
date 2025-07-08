@@ -17,7 +17,9 @@ const MixedMenuLayout: React.FC<MixedMenuLayout> = ({ items, children }) => {
   return (
     <>
       <Layout className="bg-transparent">
-        <Header className={cn('fixed z-50', 'bg-white dark:bg-black px-4 w-dvw h-14')}>
+        <Header
+          className={cn('fixed z-50', 'bg-white dark:bg-black px-4 w-dvw h-14', 'dark:border-b dark:border-gray-600')}
+        >
           <div
             className={cn('m-auto', 'bg-white dark:bg-black', 'flex justify-between items-center px-8 h-full gap-4')}
           >
@@ -39,7 +41,7 @@ const MixedMenuLayout: React.FC<MixedMenuLayout> = ({ items, children }) => {
               onClick={(e) => {
                 navigate({ to: e.key })
               }}
-              className="border-r-0"
+              className={cn('border-r-0')}
               items={items}
             />
           </div>
@@ -47,7 +49,7 @@ const MixedMenuLayout: React.FC<MixedMenuLayout> = ({ items, children }) => {
             className={cn(
               'absolute bottom-0',
               'bg-white dark:bg-black',
-              'flex gap-auto justify-between px-1 border-t border-gray-100',
+              'flex gap-auto justify-between px-1 border-t border-gray-100 dark:border-gray-600',
               'w-full h-11',
             )}
           >

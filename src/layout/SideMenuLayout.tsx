@@ -36,7 +36,7 @@ const SideMenuLayout: React.FC<MixMenuLayout> = ({ items, children }) => {
             className={cn(
               'absolute bottom-0',
               'bg-white dark:bg-black',
-              'flex gap-auto justify-between px-1 border-t border-gray-100',
+              'flex gap-auto justify-between px-1 border-t border-gray-100 dark:border-gray-600',
               'w-full h-11',
             )}
           >

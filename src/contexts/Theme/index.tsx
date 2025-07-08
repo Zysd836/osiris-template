@@ -45,6 +45,12 @@ const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) =>
             token: {
               colorPrimary: themeMode,
             },
+            components: {
+              Menu: {
+                darkItemBg: 'white',
+                darkSubMenuItemBg: 'white',
+              },
+            },
             algorithm: darkMode ? theme.darkAlgorithm : theme.defaultAlgorithm,
           }}
         >

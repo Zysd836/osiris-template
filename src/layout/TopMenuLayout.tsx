@@ -16,7 +16,9 @@ const TopMenuLayout: React.FC<TopMenuLayoutProps> = ({ items, children }) => {
   return (
     <>
       <Layout className="bg-transparent">
-        <Header className={cn('fixed z-50', 'bg-white dark:bg-black px-4 w-dvw h-14')}>
+        <Header
+          className={cn('fixed z-50', 'bg-white dark:bg-black px-4 w-dvw h-14', 'dark:border-b dark:border-gray-600')}
+        >
           <div className={cn('max-w-[1280px] m-auto', 'bg-white dark:bg-black', 'flex items-center px-8 h-full gap-4')}>
             <Logo.Header />
             <div className="flex-1">
@@ -25,7 +27,7 @@ const TopMenuLayout: React.FC<TopMenuLayoutProps> = ({ items, children }) => {
                 onClick={(e) => {
                   navigate({ to: e.key })
                 }}
-                className="border-0 h-14"
+                className={cn('border-0 h-14', 'dark:border-b dark:border-gray-600')}
                 items={items}
               />
             </div>
