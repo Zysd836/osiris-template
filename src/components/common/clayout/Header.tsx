@@ -9,6 +9,7 @@ const baseValue = cn(
   'w-dvw h-14',
   'bg-white',
   'dark:bg-gray-900',
+  'border-b border-gray-200',
   'dark:border-b dark:border-gray-600',
 )
 
@@ -18,8 +19,15 @@ const headerVariants = cva(baseValue, {
 
 export type CHeaderProps = BasicProps & VariantProps<typeof headerVariants>
 
-const CHeader: React.FC<CHeaderProps> = ({ children }) => {
-  return <Header className={headerVariants()}>{children}</Header>
+const CHeader: React.FC<CHeaderProps> = ({ children, className, ...props }) => {
+  return (
+    <Header
+      className={headerVariants({ className })}
+      {...props}
+    >
+      {children}
+    </Header>
+  )
 }
 
 export default CHeader

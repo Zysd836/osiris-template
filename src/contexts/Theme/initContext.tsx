@@ -10,4 +10,6 @@ export const initThemeContext: IThemeContext = {
   setLayout: () => {},
   setSideMenuType: () => {},
   changeDarkMode: () => {},
+  collapsedMenu: false,
+  setCollapsedMenu: () => {},
 }

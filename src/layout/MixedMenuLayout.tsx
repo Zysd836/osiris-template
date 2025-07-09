@@ -7,6 +7,7 @@ import { useNavigate } from '@tanstack/react-router'
 import SwitchLanguage from './SwitchLanguage'
 import Clayout from '@/components/common/clayout'
 import CMenu from '@/components/common/menu'
+import CollapseSider from './children/CollapseSider'
 
 type MixedMenuLayout = {
   items: MenuProps['items']
@@ -33,10 +34,7 @@ const MixedMenuLayout: React.FC<MixedMenuLayout> = ({ items, children }) => {
             </div>
           </div>
         </Clayout.Header>
-        <Clayout.Sider
-          width={200}
-          className={cn('dark:border-r dark:border-gray-600', 'h-dvh')}
-        >
+        <CollapseSider>
           <Logo.Header className={cn('flex items-center justify-center h-14')} />
           <div className="overflow-y-auto max-h-[calc(100dvh-var(--spacing)*14)]">
             <CMenu
@@ -47,7 +45,7 @@ const MixedMenuLayout: React.FC<MixedMenuLayout> = ({ items, children }) => {
               items={items}
             />
           </div>
-        </Clayout.Sider>
+        </CollapseSider>
         <Clayout.Content>
           <Breadcrumb
             items={[

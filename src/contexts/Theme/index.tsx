@@ -11,6 +11,7 @@ const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) =>
   const [layout, setLayout] = React.useState(initThemeContext.layout)
   const [sideMenuType, setSideMenuType] = React.useState(initThemeContext.sideMenuType)
   const [darkMode, setDarkMode] = React.useState(false)
+  const [collapsedMenu, setCollapsedMenu] = React.useState(false)
 
   const changeDarkMode = (value: string) => {
     if (value) {
@@ -37,6 +38,8 @@ const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) =>
         setLayout,
         setSideMenuType,
         changeDarkMode,
+        collapsedMenu,
+        setCollapsedMenu,
       }}
     >
       <StyleProvider layer>

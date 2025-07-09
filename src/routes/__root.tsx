@@ -5,7 +5,7 @@ import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
 const RootComponent = () => (
   <>
     <Outlet />
-    <TanStackRouterDevtools />
+    {/* <TanStackRouterDevtools /> */}
   </>
 )
 export const Route = createRootRouteWithContext<{ auth: IAuthContext }>()({
