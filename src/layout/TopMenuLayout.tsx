@@ -1,12 +1,13 @@
 import Logo from '@/components/common/logo'
 import { cn } from '@/utils/styles'
-import { Breadcrumb, MenuProps } from 'antd'
+import { MenuProps } from 'antd'
 import React from 'react'
-import UserDropdown from './UserDropdown'
+import UserDropdown from './children/UserDropdown'
 import { useNavigate } from '@tanstack/react-router'
-import SwitchLanguage from './SwitchLanguage'
+import SwitchLanguage from './children/SwitchLanguage'
 import Clayout from '@/components/common/clayout'
 import CMenu from '@/components/common/menu'
+import CBreadcrumb from './children/CBreadcrumb'
 
 type TopMenuLayoutProps = {
   items: MenuProps['items']
@@ -33,13 +34,8 @@ const TopMenuLayout: React.FC<TopMenuLayoutProps> = ({ items, children }) => {
             <UserDropdown />
           </div>
         </Clayout.Header>
-        <Clayout.Content className={cn(maxWidth)}>
-          <Breadcrumb
-            items={[
-              { title: 'Home', href: '/' },
-              { title: 'Dashboard', href: '/dashboard' },
-            ]}
-          />
+        <Clayout.Content className={cn(maxWidth, 'm-auto')}>
+          <CBreadcrumb />
           <section className="mt-4">{children}</section>
         </Clayout.Content>
         <Clayout.Footer>

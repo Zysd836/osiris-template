@@ -2,12 +2,13 @@ import Logo from '@/components/common/logo'
 import { cn } from '@/utils/styles'
 import { Breadcrumb, MenuProps } from 'antd'
 import React from 'react'
-import UserDropdown from './UserDropdown'
+import UserDropdown from './children/UserDropdown'
 import { useNavigate } from '@tanstack/react-router'
-import SwitchLanguage from './SwitchLanguage'
+import SwitchLanguage from './children/SwitchLanguage'
 import Clayout from '@/components/common/clayout'
 import CMenu from '@/components/common/menu'
 import CollapseSider from './children/CollapseSider'
+import CBreadcrumb from './children/CBreadcrumb'
 
 type MixedMenuLayout = {
   items: MenuProps['items']
@@ -28,10 +29,6 @@ const MixedMenuLayout: React.FC<MixedMenuLayout> = ({ items, children }) => {
             )}
           >
             <Logo.Header />
-            <div className="flex items-center">
-              <SwitchLanguage />
-              <UserDropdown />
-            </div>
           </div>
         </Clayout.Header>
         <CollapseSider>
@@ -47,12 +44,7 @@ const MixedMenuLayout: React.FC<MixedMenuLayout> = ({ items, children }) => {
           </div>
         </CollapseSider>
         <Clayout.Content>
-          <Breadcrumb
-            items={[
-              { title: 'Home', href: '/' },
-              { title: 'Dashboard', href: '/dashboard' },
-            ]}
-          />
+          <CBreadcrumb />
           <section className="mt-4">{children}</section>
         </Clayout.Content>
       </Clayout.Layout>

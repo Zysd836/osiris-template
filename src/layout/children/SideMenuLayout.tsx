@@ -7,7 +7,9 @@ import { useNavigate } from '@tanstack/react-router'
 import SwitchLanguage from './SwitchLanguage'
 import Clayout from '@/components/common/clayout'
 import CMenu from '@/components/common/menu'
-import CollapseSider from './children/CollapseSider'
+import CollapseSider from './CollapseSider'
+import CBreadcrumb from './CBreadcrumb'
+import { useTheme } from '@/contexts/Theme/useTheme'
 
 type MixMenuLayout = {
   items: MenuProps['items']
@@ -15,12 +17,13 @@ type MixMenuLayout = {
 }
 const SideMenuLayout: React.FC<MixMenuLayout> = ({ items, children }) => {
   const navigate = useNavigate()
+  const { collapsedMenu } = useTheme()
   return (
     <>
       <Clayout.Layout>
         <CollapseSider>
           <Logo.Header className={cn('flex items-center justify-center h-14')} />
-          <div className="overflow-y-auto max-h-[calc(100dvh-var(--spacing)*25)]">
+          <div className="overflow-y-auto flex-1">
             <CMenu
               mode="inline"
               onClick={(e) => {
@@ -32,9 +35,11 @@ const SideMenuLayout: React.FC<MixMenuLayout> = ({ items, children }) => {
           <div
             className={cn(
               'absolute bottom-0',
-              'flex gap-auto justify-between px-1',
+              'flex gap-auto justify-between items-center',
+              'px-1 py-2',
+              collapsedMenu ? 'flex-col gap-4' : 'flex-row',
               'border-t border-gray-100 dark:border-gray-600',
-              'w-full h-11',
+              'w-full',
             )}
           >
             <UserDropdown />
@@ -42,12 +47,7 @@ const SideMenuLayout: React.FC<MixMenuLayout> = ({ items, children }) => {
           </div>
         </CollapseSider>
         <Clayout.Content>
-          <Breadcrumb
-            items={[
-              { title: 'Home', href: '/' },
-              { title: 'Dashboard', href: '/dashboard' },
-            ]}
-          />
+          <CBreadcrumb />
           <section className="mt-4">{children}</section>
         </Clayout.Content>
       </Clayout.Layout>

@@ -13,7 +13,8 @@ const CollapseSider: React.FC<CollapseSiderProps> = ({ children }) => {
     <Clayout.Sider
       collapsed={collapsedMenu}
       collapsedWidth={64}
-      className={cn('w-[200px] h-dvh', 'border-r border-gray-200 dark:border-r dark:border-gray-600')}
+      width={260}
+      className={cn('h-dvh', 'border-r border-gray-200 dark:border-r dark:border-gray-600')}
     >
       {children}
       <CollapseButton />

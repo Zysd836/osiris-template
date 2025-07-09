@@ -4,7 +4,7 @@ import { Button } from 'antd'
 import { ChevronLeft } from 'lucide-react'
 
 const CollapseButton = () => {
-  const { setCollapsedMenu } = useTheme()
+  const { setCollapsedMenu, collapsedMenu } = useTheme()
   const toggleCollapse = () => {
     setCollapsedMenu((prev) => !prev)
   }
@@ -18,11 +18,17 @@ const CollapseButton = () => {
         'transition-all',
         'absolute z-10 -right-3 top-[80px]',
         'bg-white',
+        'dark:bg-gray-800',
         'p-0',
         'flex justify-center items-center',
       )}
       onClick={toggleCollapse}
-      icon={<ChevronLeft size={16} />}
+      icon={
+        <ChevronLeft
+          size={16}
+          className={cn(collapsedMenu ? 'rotate-180' : '', 'text-gray-500', 'transition-all')}
+        />
+      }
     ></Button>
   )
 }
