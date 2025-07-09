@@ -32,29 +32,18 @@ const MixedMenuLayout: React.FC<MixedMenuLayout> = ({ items, children }) => {
         </Header>
         <Sider
           collapsedWidth={720}
-          className={cn('w-[200px] h-dvh', 'bg-white dark:bg-black')}
+          className={cn('w-[200px] h-dvh', 'bg-white dark:bg-black', 'dark:border-r dark:border-gray-600')}
         >
           <Logo.Header className={cn('flex items-center justify-center h-14')} />
-          <div className="overflow-y-auto max-h-[calc(100dvh-var(--spacing)*25)]">
+          <div className="overflow-y-auto max-h-[calc(100dvh-var(--spacing)*14)]">
             <Menu
               mode="inline"
               onClick={(e) => {
                 navigate({ to: e.key })
               }}
-              className={cn('border-r-0')}
+              className={cn('dark:bg-black', 'border-0 dark:border-r dark:border-gray-600')}
               items={items}
             />
-          </div>
-          <div
-            className={cn(
-              'absolute bottom-0',
-              'bg-white dark:bg-black',
-              'flex gap-auto justify-between px-1 border-t border-gray-100 dark:border-gray-600',
-              'w-full h-11',
-            )}
-          >
-            <UserDropdown />
-            <SwitchLanguage />
           </div>
         </Sider>
         <Content className={cn('w-full p-12 mt-14 bg-transparent rounded-sm')}>

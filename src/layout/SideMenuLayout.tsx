@@ -19,7 +19,7 @@ const SideMenuLayout: React.FC<MixMenuLayout> = ({ items, children }) => {
       <Layout className="bg-transparent">
         <Sider
           collapsedWidth={720}
-          className={cn('w-[200px] h-dvh', 'bg-white dark:bg-black')}
+          className={cn('w-[200px] h-dvh', 'bg-white dark:bg-black', 'dark:border-r dark:border-gray-600')}
         >
           <Logo.Header className={cn('flex items-center justify-center h-14')} />
           <div className="overflow-y-auto max-h-[calc(100dvh-var(--spacing)*25)]">
@@ -28,7 +28,7 @@ const SideMenuLayout: React.FC<MixMenuLayout> = ({ items, children }) => {
               onClick={(e) => {
                 navigate({ to: e.key })
               }}
-              className="border-r-0"
+              className={cn('border-r-0', 'dark:bg-black', 'dark:border-gray-600')}
               items={items}
             />
           </div>

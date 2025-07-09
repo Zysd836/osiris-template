@@ -1,6 +1,5 @@
 import { fetchMe } from '@/utils/auth.mock'
 import { createFileRoute, Outlet, redirect } from '@tanstack/react-router'
-import Loading from '@/components/common/loading'
 import ProLayout from '@/layout/ProLayout'
 import { useEffect } from 'react'
 import useAuth from '@/contexts/Auth/useAuth'
