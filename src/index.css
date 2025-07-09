@@ -11,3 +11,7 @@ body {
   padding: 0;
   @apply bg-gray-100 dark:bg-black text-gray-800 dark:text-white;
 }
+/* menu */
+.ant-menu-sub {
+  @apply bg-white dark:bg-gray-900 transition-colors duration-0;
+}

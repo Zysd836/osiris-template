@@ -1,4 +1,6 @@
 import Header from './Header'
-import Section from './Section'
+import Layout from './Layout'
 import Footer from './Footer'
-export default { Header, Section, Footer }
+import Sider from './Sider'
+import Content from './Content'
+export default { Header, Layout, Footer, Sider, Content }

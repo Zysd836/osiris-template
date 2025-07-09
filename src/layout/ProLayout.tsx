@@ -19,6 +19,7 @@ const mockMenuItems: MenuProps['items'] = [
   },
   { key: '/demo', label: 'Demo', children: [{ key: '/demo/abc', label: 'abc' }] },
 ]
+
 const mockMenuItemsGroup: MenuProps['items'] = [
   { key: '/dashboard', label: 'Dashboard', icon: <ChartPie size={16} /> },
   {
@@ -53,7 +54,7 @@ const ProLayout: React.FC<ProLayoutProps> = ({ children }) => {
       default:
         return null
     }
-  }, [layout, children, menuItems])
+  }, [layout, menuItems, mockMenuItems])
 
   return (
     <>

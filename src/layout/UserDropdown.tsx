@@ -17,31 +17,18 @@ const items: MenuProps['items'] = [
   },
 ]
 const UserDropdown = () => {
-  const { layout } = useTheme()
   const { me } = useAuth()
   return (
     <>
-      {layout === 'top' ? (
-        <Dropdown menu={{ items }}>
-          <Button
-            type="text"
-            size="large"
-          >
-            <Avatar size={32} />
-            {me?.username || 'User'}
-          </Button>
-        </Dropdown>
-      ) : (
-        <Dropdown menu={{ items }}>
-          <Button
-            size="large"
-            type="text"
-          >
-            <Avatar size={32} />
-            {me?.username || 'User'}
-          </Button>
-        </Dropdown>
-      )}
+      <Dropdown menu={{ items }}>
+        <Button
+          size="large"
+          type="text"
+        >
+          <Avatar size={32} />
+          {me?.username || 'User'}
+        </Button>
+      </Dropdown>
     </>
   )
 }
