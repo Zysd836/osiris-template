@@ -37,11 +37,11 @@ const TopMenuLayout: React.FC<TopMenuLayoutProps> = ({ items, children }) => {
         <Clayout.Content className={cn(maxWidth, 'm-auto')}>
           <CBreadcrumb />
           <section className="mt-4">{children}</section>
+          <Clayout.Footer>
+            <div>Osiris Team</div>
+            <div className="font-semibold">Power of Osiris Team</div>
+          </Clayout.Footer>
         </Clayout.Content>
-        <Clayout.Footer>
-          <div>Osiris Team</div>
-          <div className="font-semibold">Power of Osiris Team</div>
-        </Clayout.Footer>
       </Clayout.Layout>
     </>
   )

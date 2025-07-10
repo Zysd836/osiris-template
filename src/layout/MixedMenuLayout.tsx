@@ -46,12 +46,12 @@ const MixedMenuLayout: React.FC<MixedMenuLayout> = ({ items, children }) => {
         <Clayout.Content>
           <CBreadcrumb />
           <section className="mt-4">{children}</section>
+          <Clayout.Footer>
+            <div>Osiris Team</div>
+            <div className="font-semibold">Power of Osiris Team</div>
+          </Clayout.Footer>
         </Clayout.Content>
       </Clayout.Layout>
-      <Clayout.Footer>
-        <div>Osiris Team</div>
-        <div className="font-semibold">Power of Osiris Team</div>
-      </Clayout.Footer>
     </>
   )
 }
