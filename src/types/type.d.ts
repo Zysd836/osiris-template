@@ -1,4 +1,11 @@
 declare namespace Schema {
+  type RequestType<T, P> = {
+    body?: T
+    params?: P
+  }
+  type ResponseType<T> = {
+    data: T
+  }
   type LoginRequest = {
     username: string
     password: string
