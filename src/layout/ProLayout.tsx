@@ -1,10 +1,10 @@
 import { useTheme } from '@/contexts/Theme/useTheme'
 import React, { useMemo } from 'react'
-import TopMenuLayout from './TopMenuLayout'
 import { MenuProps } from 'antd'
 import { ChartPie, BookUser } from 'lucide-react'
 import Setting from '@/components/common/setting'
-import SideMenuLayout from './children/SideMenuLayout'
+import TopMenuLayout from './TopMenuLayout'
+import SideMenuLayout from './SideMenuLayout'
 import MixedMenuLayout from './MixedMenuLayout'
 
 interface ProLayoutProps {

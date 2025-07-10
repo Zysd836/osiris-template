@@ -1,11 +1,13 @@
+import { useTheme } from '@/contexts/Theme/useTheme'
 import { Typography } from 'antd'
 import React from 'react'
 
 const Header = () => {
+  const { brandName, description } = useTheme()
   return (
     <header className="text-center mb-8">
-      <Typography.Title className="">Osiris Team</Typography.Title>
-      <Typography.Text>A modern, open-source, and self-hosted alternative to Discord.</Typography.Text>
+      <Typography.Title className="">{brandName}</Typography.Title>
+      <Typography.Text>{description}</Typography.Text>
     </header>
   )
 }

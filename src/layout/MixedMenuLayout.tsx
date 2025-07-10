@@ -9,6 +9,7 @@ import Clayout from '@/components/common/clayout'
 import CMenu from '@/components/common/menu'
 import CollapseSider from './children/CollapseSider'
 import CBreadcrumb from './children/CBreadcrumb'
+import Footer from './children/Footer'
 
 type MixedMenuLayout = {
   items: MenuProps['items']
@@ -21,12 +22,7 @@ const MixedMenuLayout: React.FC<MixedMenuLayout> = ({ items, children }) => {
       <Clayout.Layout>
         <Clayout.Header>
           <div
-            className={cn(
-              'h-full',
-              'px-8 m-auto',
-              'bg-white dark:bg-gray-900',
-              'flex justify-between items-center gap-4',
-            )}
+            className={cn('h-full', 'm-auto', 'bg-white dark:bg-gray-900', 'flex justify-between items-center gap-4')}
           >
             <Logo.Header />
           </div>
@@ -46,10 +42,7 @@ const MixedMenuLayout: React.FC<MixedMenuLayout> = ({ items, children }) => {
         <Clayout.Content>
           <CBreadcrumb />
           <section className="mt-4">{children}</section>
-          <Clayout.Footer>
-            <div>Osiris Team</div>
-            <div className="font-semibold">Power of Osiris Team</div>
-          </Clayout.Footer>
+          <Footer />
         </Clayout.Content>
       </Clayout.Layout>
     </>

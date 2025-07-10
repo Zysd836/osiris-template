@@ -6,14 +6,18 @@ type HeaderProps = {
   className?: string
 }
 const Header: React.FC<HeaderProps> = ({ className }) => {
-  const { collapsedMenu } = useTheme()
+  const { collapsedMenu, brandName, logo } = useTheme()
   const onClick = () => {}
   return (
     <div
       onClick={onClick}
-      className={cn('font-semibold text-xl', 'cursor-pointer', className)}
+      className={cn('font-semibold text-xl', 'cursor-pointer', 'flex items-center gap-2', className)}
     >
-      {collapsedMenu ? 'O' : 'Osiris Team'}
+      <img
+        src={logo}
+        className="h-8"
+      />
+      {collapsedMenu ? brandName?.[0] : brandName}
     </div>
   )
 }

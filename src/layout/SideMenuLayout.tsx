@@ -1,15 +1,16 @@
 import Logo from '@/components/common/logo'
 import { cn } from '@/utils/styles'
-import { Breadcrumb, MenuProps } from 'antd'
+import { MenuProps } from 'antd'
 import React from 'react'
-import UserDropdown from './UserDropdown'
+import UserDropdown from './children/UserDropdown'
 import { useNavigate } from '@tanstack/react-router'
-import SwitchLanguage from './SwitchLanguage'
+import SwitchLanguage from './children/SwitchLanguage'
 import Clayout from '@/components/common/clayout'
 import CMenu from '@/components/common/menu'
-import CollapseSider from './CollapseSider'
-import CBreadcrumb from './CBreadcrumb'
+import CollapseSider from './children/CollapseSider'
+import CBreadcrumb from './children/CBreadcrumb'
 import { useTheme } from '@/contexts/Theme/useTheme'
+import Footer from './children/Footer'
 
 type MixMenuLayout = {
   items: MenuProps['items']
@@ -22,7 +23,7 @@ const SideMenuLayout: React.FC<MixMenuLayout> = ({ items, children }) => {
     <>
       <Clayout.Layout>
         <CollapseSider>
-          <Logo.Header className={cn('flex items-center justify-center h-14')} />
+          <Logo.Header className={cn('flex items-center', 'h-14', 'pl-4')} />
           <div className="overflow-y-auto flex-1">
             <CMenu
               mode="inline"
@@ -49,12 +50,9 @@ const SideMenuLayout: React.FC<MixMenuLayout> = ({ items, children }) => {
         <Clayout.Content>
           <CBreadcrumb />
           <section className="mt-4">{children}</section>
+          <Footer />
         </Clayout.Content>
       </Clayout.Layout>
-      <Clayout.Footer>
-        <div>Osiris Team</div>
-        <div className="font-semibold">Power of Osiris Team</div>
-      </Clayout.Footer>
     </>
   )
 }

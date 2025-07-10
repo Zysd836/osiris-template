@@ -8,6 +8,7 @@ import SwitchLanguage from './children/SwitchLanguage'
 import Clayout from '@/components/common/clayout'
 import CMenu from '@/components/common/menu'
 import CBreadcrumb from './children/CBreadcrumb'
+import Footer from './children/Footer'
 
 type TopMenuLayoutProps = {
   items: MenuProps['items']
@@ -37,10 +38,7 @@ const TopMenuLayout: React.FC<TopMenuLayoutProps> = ({ items, children }) => {
         <Clayout.Content className={cn(maxWidth, 'm-auto')}>
           <CBreadcrumb />
           <section className="mt-4">{children}</section>
-          <Clayout.Footer>
-            <div>Osiris Team</div>
-            <div className="font-semibold">Power of Osiris Team</div>
-          </Clayout.Footer>
+          <Footer />
         </Clayout.Content>
       </Clayout.Layout>
     </>
