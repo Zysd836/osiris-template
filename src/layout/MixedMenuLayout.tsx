@@ -25,6 +25,10 @@ const MixedMenuLayout: React.FC<MixedMenuLayout> = ({ items, children }) => {
             className={cn('h-full', 'm-auto', 'bg-white dark:bg-gray-900', 'flex justify-between items-center gap-4')}
           >
             <Logo.Header />
+            <div className="flex items-center">
+              <SwitchLanguage />
+              <UserDropdown />
+            </div>
           </div>
         </Clayout.Header>
         <CollapseSider>
