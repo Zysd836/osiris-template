@@ -20,7 +20,7 @@ const CBreadcrumb = () => {
     const newBreadCrumbs: BreadcrumbProps['items'] =
       crumbs?.map((crumb) => ({
         title: crumb?.loaderData?.crumb?.title || '',
-        href: crumb?.pathname,
+        ...(!crumb?.loaderData?.isContainer ? { href: crumb?.pathname } : {}),
       })) || []
     return [...initBreadcrumbs, ...newBreadCrumbs]
   }, [])

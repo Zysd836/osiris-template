@@ -1,13 +1,27 @@
 import { useTheme } from '@/contexts/Theme/useTheme'
 import { cn } from '@/utils/styles'
-import React from 'react'
+import React, { useMemo } from 'react'
 
 type HeaderProps = {
   className?: string
 }
 const Header: React.FC<HeaderProps> = ({ className }) => {
-  const { collapsedMenu, brandName, logo } = useTheme()
+  const { collapsedMenu, brandName, logo, layout } = useTheme()
   const onClick = () => {}
+
+  const title = useMemo(() => {
+    if (collapsedMenu) {
+      switch (layout) {
+        case 'mix':
+          return brandName
+        case 'top':
+          return logo ? null : brandName?.[0]
+        case 'side':
+          return null
+      }
+    }
+    return brandName
+  }, [collapsedMenu, brandName, logo, layout])
   return (
     <div
       onClick={onClick}
@@ -15,9 +29,10 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
     >
       <img
         src={logo}
+        alt={brandName}
         className="h-8"
       />
-      {collapsedMenu ? brandName?.[0] : brandName}
+      {title}
     </div>
   )
 }
