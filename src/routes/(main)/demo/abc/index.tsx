@@ -1,3 +1,4 @@
+import { LoaderDataRoute } from '@/type'
 import { createFileRoute } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/(main)/demo/abc/')({
@@ -7,7 +8,7 @@ export const Route = createFileRoute('/(main)/demo/abc/')({
       crumb: {
         title: 'Demo ABC',
       },
-    }
+    } as LoaderDataRoute
   },
 })
 
