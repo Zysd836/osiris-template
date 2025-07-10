@@ -40,6 +40,9 @@ const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) =>
         changeDarkMode,
         collapsedMenu,
         setCollapsedMenu,
+        brandName: initThemeContext?.brandName,
+        logo: initThemeContext?.logo,
+        description: initThemeContext?.description,
       }}
     >
       <StyleProvider layer>

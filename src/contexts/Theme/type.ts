@@ -8,4 +8,7 @@ export interface IThemeContext extends ITheme {
   changeDarkMode: (value: string) => void // Use Dispatch type for setState functions
   collapsedMenu: boolean // Optional property for collapsed state
   setCollapsedMenu: Dispatch<React.SetStateAction<boolean>> // Optional setter for collapsed state
+  brandName: string // Optional property for brand name
+  logo: string
+  description?: string // Optional property for description
 }
