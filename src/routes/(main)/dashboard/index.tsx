@@ -3,6 +3,13 @@ import { Card } from 'antd'
 
 export const Route = createFileRoute('/(main)/dashboard/')({
   component: RouteComponent,
+  loader: () => {
+    return {
+      crumb: {
+        title: 'Dashboard',
+      },
+    }
+  },
 })
 
 function RouteComponent() {
