@@ -1,4 +1,4 @@
-import { LoaderDataRoute } from '@/type'
+import { LoaderDataRoute } from '@/global'
 import { createFileRoute } from '@tanstack/react-router'
 import { Card } from 'antd'
 

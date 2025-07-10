@@ -1,4 +1,4 @@
-import { LoaderDataRoute } from '@/type'
+import { LoaderDataRoute } from '@/global'
 import { createFileRoute } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/(main)/demo/abc/')({
