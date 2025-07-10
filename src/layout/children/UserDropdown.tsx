@@ -23,11 +23,26 @@ const items: MenuProps['items'] = [
   },
 ]
 const UserDropdown = () => {
-  const { me } = useAuth()
+  const { me, logout } = useAuth()
   const { collapsedMenu } = useTheme()
+  const onClick: MenuProps['onClick'] = (e) => {
+    switch (e.key) {
+      case '1':
+        // Navigate to profile page
+        break
+      case '2':
+        // Navigate to settings page
+        break
+      case '3':
+        logout()
+        break
+      default:
+        break
+    }
+  }
   return (
     <>
-      <Dropdown menu={{ items }}>
+      <Dropdown menu={{ items, onClick }}>
         <Button
           size="large"
           type="text"

@@ -23,6 +23,9 @@ const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => 
   }
   const logout = () => {
     console.log('Logging out')
+    setAuthenticated(false)
+    Cookie.remove(CookieKey.AUTH_TOKEN)
+    window.location.href = '/login' // Redirect to login page
     // Implement logout logic here
   }
   return (
