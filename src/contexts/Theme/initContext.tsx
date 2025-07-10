@@ -5,7 +5,7 @@ import { assets } from '@/utils/assets.constant'
 export const initThemeContext: IThemeContext = {
   darkMode: false,
   themeMode: '#3498DB',
-  layout: 'top',
+  layout: 'mix',
   sideMenuType: 'grouping',
   setThemeMode: () => {},
   setLayout: () => {},
